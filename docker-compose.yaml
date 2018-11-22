@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  oauthserver:
+    image: "oauthserver"
+    build: .
+    environment:
+      DATABASE_HOST: dbhost
+      LISTEN_PORT: 8081
+    extra_hosts:
+      dbhost: 172.31.32.67
+    ports:
+      - "8081:8081"

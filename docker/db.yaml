@@ -1,0 +1,19 @@
+version: "3.4"
+
+services:
+  keystore:
+    image: "bitnami/mariadb"
+    environment:
+      MARIADB_ROOT_PASSWORD: 123
+      MARIADB_DATABASE: auth_store
+      MARIADB_USER: auth_admin
+      MARIADB_PASSWORD: 123
+    ports:
+      - 80:80
+    volumes:
+      - ./data:/bitnami
+  oauthserver:
+    depends_on:
+      - keystore
+    environment:
+      DATABASE_HOST: keystore

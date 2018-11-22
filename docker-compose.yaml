@@ -13,12 +13,12 @@ services:
     ports:
       - "9906:3306"
   web:
-    image: php:7.2.2-apache
+    image: pensiero/apache-php-mysql
     container_name: php_web
     depends_on:
       - db
     volumes:
-      - ./php/:/var/www/html/
+      - ./php/:/var/www/public/
     ports:
       - "8100:80"
     stdin_open: true
